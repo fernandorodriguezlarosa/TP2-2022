@@ -1,0 +1,195 @@
+---
+title: Trabajo En Clase TyHM I
+author:
+- name: Franco Santilli
+  email: francosantilli47@gmail.com
+  affiliation: Facultad de Ingeniería
+  correspondingauthor: yes
+  footnote: 1
+- name: Guillermo Zaina
+  email: zainaguillermo@gmail.com
+  affiliation: Facultad de Ingeniería
+- name: Marcos Santiago
+  email: marcossantiagoh2@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+- name: Renzo Tagarot
+  email: renzot0800@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+- name: Fernando Rodriguez
+  email: ferodriguez15@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+address:
+- code: Facultad de Ingeniería
+  address: Paseo Dr. Emilio Descotte 750, M5500 Mendoza
+output: rticles::elsevier_article
+---
+
+## Introducción
+
+En este archivo se muestra lo trabajado en clase como modo de introducción a los conocimientos de R que deberemos aprender para poder realizar la entrega final, fragmentos de códigos y que hacen y como funcionan
+
+## Fragmentos de Códigos
+
+```{r}
+A<-0
+B<-1
+F[1]<-A
+F[2]<-B
+for (i in 3:100) { F[i] <- (F[i-1]+F[i-2]) }
+head (F)
+```
+```{r}
+x<-rnorm(100,50,25)
+burbuja <- function(x){
+  n<-length(x)
+  for (j in 1:(n-1)) {
+    for (i in 1:(n-j)) {
+      if (x[i]>x[i+1]) {
+        temp<-x[i]
+        x[i]<-x[i+1]
+        x[i+1]<-temp
+      }
+    }
+  }
+  return(x)
+}
+res<-burbuja(x)
+res
+```
+
+```{r}
+t0<-Sys.time()
+x<-rnorm(100,50,25)
+burbuja <- function(x){
+  n<-length(x)
+  for (j in 1:(n-1)) {
+    for (i in 1:(n-j)) {
+      if (x[i]>x[i+1]) {
+        temp<-x[i]
+        x[i]<-x[i+1]
+        x[i+1]<-temp
+      }
+    }
+  }
+  return(x)
+}
+res<-burbuja(x)
+res
+tf<-Sys.time()
+#ahora medimos la velocidad del algoritmo
+tf-t0
+```
+
+```{r}
+library(tictoc)
+tic()
+x<-rnorm(100,50,25)
+burbuja <- function(x){
+  n<-length(x)
+  for (j in 1:(n-1)) {
+    for (i in 1:(n-j)) {
+      if (x[i]>x[i+1]) {
+        temp<-x[i]
+        x[i]<-x[i+1]
+        x[i+1]<-temp
+      }
+    }
+  }
+  return(x)
+}
+res<-burbuja(x)
+res
+toc()
+```
+
+```{r}
+library(microbenchmark)
+x<-rnorm(100,50,25)
+mbm<-microbenchmark(
+  "burbuja"={
+    x<-rnorm(100,50,25)
+burbuja <- function(x){
+  n<-length(x)
+  for (j in 1:(n-1)) {
+    for (i in 1:(n-j)) {
+      if (x[i]>x[i+1]) {
+        temp<-x[i]
+        x[i]<-x[i+1]
+        x[i+1]<-temp
+      }
+    }
+  }
+  return(x)
+}
+res<-burbuja(x)
+res
+  },
+"sort"={
+  sort(x)
+}
+)
+
+mbm
+```
+
+```{r}
+library(ggplot2)
+autoplot(mbm)
+```
+
+## creación de vectores
+```{r}
+v1 <- c(1,2,3,4,5)
+```
+
+creación de un vector de 9 componentes
+```{r}
+v2 <- c(1,2,3,4,5,6,7,8,9)
+```
+
+## creación de matrices
+```{r}
+m1<- matrix(v2,ncol=3,byrow=FALSE)
+```
+
+el byrow me deja ordenar los valores por fila en el caso de TRUE, o en columna en el caso de FALSE
+
+## averiguar que clase de ojeto hemos creado
+para saber de qué clase se utiliza el comando class(nombre del objeto)
+vemos que nos dice que el vector es de tipo numérico y la matriz de tipo array o matriz, además siempre es numerica la matriz.
+
+```{r}
+class(v1)
+class(m1)
+```
+
+## creación de un vector de palabras
+```{r}
+v3<- c("a","b","c")
+class(v3)
+v3
+```
+
+hay un comando que se llama dimnames que sirve para ponerle nombre a las filas y las columnas.
+
+## importar datos de la red o de excel
+lo que nos dice al pegar un dato de excel es que enumera todos los cambios que tuvimos que hacer en el archivo original para dejarlo ordenado y acomodado.
+
+```{r}
+library(readr)
+casos <- read_delim("C:/Users/franc/Downloads/casos.csv", 
+    delim = ";", escape_double = FALSE, col_types = cols(`Covid Argentina` = col_date(format = "%m/%d/%Y")), 
+    trim_ws = TRUE)
+```
+
+dataset es un conjunto de datos de una tabla tomados de la vida real que estan documentados y estan guardados en repositorios de datos.
+
+## ploteo de datos
+
+```{r}
+casos$...2
+plot(casos$...2,main="Contagios 2020",ylab="Semana",xlab="Casos Positivos")
+```

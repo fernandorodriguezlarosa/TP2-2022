@@ -1,0 +1,510 @@
+\documentclass[]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+
+\usepackage[hyphens]{url}
+
+
+\usepackage{lineno} % add
+
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\usepackage{graphicx}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={Trabajo En Clase TyHM I},
+            colorlinks=false,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+
+\setcounter{secnumdepth}{0}
+% Pandoc toggle for numbering sections (defaults to be off)
+\setcounter{secnumdepth}{0}
+
+% Pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+
+
+
+\begin{document}
+
+
+\begin{frontmatter}
+
+  \title{Trabajo En Clase TyHM I}
+    \author[Facultad de Ingeniería]{Franco Santilli%
+  \corref{cor1}%
+  \fnref{1}}
+   \ead{francosantilli47@gmail.com} 
+    \author[Facultad de Ingeniería]{Guillermo Zaina}
+   \ead{zainaguillermo@gmail.com} 
+    \author[Facultad de Ingeniería]{Marcos Santiago%
+  %
+  \fnref{2}}
+   \ead{marcossantiagoh2@gmail.com} 
+    \author[Facultad de Ingeniería]{Renzo Tagarot%
+  %
+  \fnref{2}}
+   \ead{renzot0800@gmail.com} 
+    \author[Facultad de Ingeniería]{Fernando Rodriguez%
+  %
+  \fnref{2}}
+   \ead{ferodriguez15@gmail.com} 
+      \affiliation[Facultad de Ingeniería]{Paseo Dr.~Emilio Descotte
+750, M5500 Mendoza}
+    \cortext[cor1]{Corresponding author}
+  
+  \begin{abstract}
+  
+  \end{abstract}
+  
+ \end{frontmatter}
+
+\hypertarget{introducciuxf3n}{%
+\subsection{Introducción}\label{introducciuxf3n}}
+
+En este archivo se muestra lo trabajado en clase como modo de
+introducción a los conocimientos de R que deberemos aprender para poder
+realizar la entrega final, fragmentos de códigos y que hacen y como
+funcionan
+
+\hypertarget{fragmentos-de-cuxf3digos}{%
+\subsection{Fragmentos de Códigos}\label{fragmentos-de-cuxf3digos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{B}\OtherTok{\textless{}{-}}\DecValTok{1}
+\NormalTok{F[}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{A}
+\NormalTok{F[}\DecValTok{2}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{B}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{3}\SpecialCharTok{:}\DecValTok{100}\NormalTok{) \{ F[i] }\OtherTok{\textless{}{-}}\NormalTok{ (F[i}\DecValTok{{-}1}\NormalTok{]}\SpecialCharTok{+}\NormalTok{F[i}\DecValTok{{-}2}\NormalTok{]) \}}
+\FunctionTok{head}\NormalTok{ (F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 1 1 2 3 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{burbuja }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  n}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(x)}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{j)) \{}
+      \ControlFlowTok{if}\NormalTok{ (x[i]}\SpecialCharTok{\textgreater{}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]) \{}
+\NormalTok{        temp}\OtherTok{\textless{}{-}}\NormalTok{x[i]}
+\NormalTok{        x[i]}\OtherTok{\textless{}{-}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+\NormalTok{        x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{temp}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{burbuja}\NormalTok{(x)}
+\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  -0.9955975   3.7762888   6.7675013  11.1163895  12.3716844  13.1919961
+##   [7]  13.3235577  13.9882835  14.9464894  17.0024155  17.2823846  19.8319228
+##  [13]  20.7407452  26.5450244  26.6651673  26.8584679  26.9035641  29.2543837
+##  [19]  29.5005094  30.3653108  30.5200233  31.6349098  32.6137874  33.5095589
+##  [25]  33.5540416  33.7823651  34.0849818  34.7108244  34.8191494  36.5633122
+##  [31]  37.3269203  37.7295340  37.8636457  38.8057012  40.6706716  43.3481358
+##  [37]  43.4034925  43.8193740  43.8973269  45.5642987  45.8492078  47.9877809
+##  [43]  48.0796002  48.9344218  49.3184416  49.8699272  51.1979948  51.4383106
+##  [49]  51.6791279  51.9140593  52.2237647  53.0105818  53.0483727  53.2638780
+##  [55]  54.0587214  54.2859192  55.1423438  55.8238406  56.4796571  58.2861261
+##  [61]  58.6620270  58.9426201  59.0187627  59.7637534  60.7078165  61.0700320
+##  [67]  61.7135935  62.8429723  63.6349436  64.9877460  68.8069497  69.2966189
+##  [73]  71.0958972  72.0087430  72.3313963  72.7570827  73.2754944  73.3878099
+##  [79]  74.2040067  74.9742332  75.2200967  75.4997884  75.8548063  75.9915039
+##  [85]  76.4902495  77.3575143  78.7751203  79.0690415  79.1522729  82.3537593
+##  [91]  83.2717399  86.6115419  88.3162479  91.4907457  94.1650412  97.1811589
+##  [97]  98.0851080 102.6618328 107.4188643 114.9425602
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t0}\OtherTok{\textless{}{-}}\FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{burbuja }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  n}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(x)}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{j)) \{}
+      \ControlFlowTok{if}\NormalTok{ (x[i]}\SpecialCharTok{\textgreater{}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]) \{}
+\NormalTok{        temp}\OtherTok{\textless{}{-}}\NormalTok{x[i]}
+\NormalTok{        x[i]}\OtherTok{\textless{}{-}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+\NormalTok{        x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{temp}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{burbuja}\NormalTok{(x)}
+\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  -2.526493   2.220028   7.546517  14.127133  17.284483  20.599031
+##   [7]  22.521082  23.081176  23.261928  24.320832  25.041102  26.293095
+##  [13]  31.044062  31.574734  31.944678  32.394472  32.603816  34.013013
+##  [19]  34.617305  34.677244  35.338116  35.353994  36.692042  37.088201
+##  [25]  37.346985  38.717020  39.848896  39.935346  40.290678  42.143486
+##  [31]  42.654941  42.703559  43.582756  43.587337  44.069049  45.075642
+##  [37]  45.113091  45.377827  45.694195  45.804847  46.039453  47.849003
+##  [43]  48.468012  50.117626  50.177270  50.732179  51.184511  51.250953
+##  [49]  51.486522  52.434571  53.398487  54.064371  55.646572  55.765504
+##  [55]  55.841154  56.250822  57.713666  58.205436  58.206399  58.583686
+##  [61]  59.406904  59.491970  61.205835  61.556379  61.856931  61.996656
+##  [67]  63.033385  63.687266  65.155896  66.645569  69.312501  70.069183
+##  [73]  70.617032  70.683327  70.845981  71.849792  72.043971  72.704888
+##  [79]  74.342622  75.344856  75.651586  76.052872  76.395079  77.223190
+##  [85]  78.177295  79.139505  80.280839  82.949626  83.253269  85.567116
+##  [91]  85.721124  87.087369  87.498939  87.700550  88.584241  90.569905
+##  [97]  92.306352  95.807388  99.993211 102.098806
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf}\OtherTok{\textless{}{-}}\FunctionTok{Sys.time}\NormalTok{()}
+\CommentTok{\#ahora medimos la velocidad del algoritmo}
+\NormalTok{tf}\SpecialCharTok{{-}}\NormalTok{t0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 0.1551981 secs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tictoc)}
+\FunctionTok{tic}\NormalTok{()}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{burbuja }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  n}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(x)}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{j)) \{}
+      \ControlFlowTok{if}\NormalTok{ (x[i]}\SpecialCharTok{\textgreater{}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]) \{}
+\NormalTok{        temp}\OtherTok{\textless{}{-}}\NormalTok{x[i]}
+\NormalTok{        x[i]}\OtherTok{\textless{}{-}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+\NormalTok{        x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{temp}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{burbuja}\NormalTok{(x)}
+\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  -7.435248  -2.481888  -1.218721   1.632252   6.426259   7.104327
+##   [7]   8.609149   9.144819  13.055219  14.771200  15.494357  16.014596
+##  [13]  16.266847  17.379334  17.862300  18.773446  19.075061  19.380523
+##  [19]  19.620055  24.498302  25.565413  26.832655  27.026582  29.225409
+##  [25]  30.703107  30.751534  32.587487  33.663776  33.759393  36.127879
+##  [31]  37.708992  37.920027  38.656652  39.484726  40.036221  40.581770
+##  [37]  41.000604  41.466927  42.050987  43.281008  43.708797  43.879256
+##  [43]  43.937458  43.967858  44.168787  44.816738  44.888452  44.979318
+##  [49]  46.723360  47.161659  47.273288  47.578258  48.893119  49.290713
+##  [55]  49.305098  50.387461  51.104896  51.863854  51.990642  51.994089
+##  [61]  53.180367  54.151726  54.971656  56.214497  57.780036  58.808878
+##  [67]  59.427194  59.982873  61.974604  63.256512  65.687290  67.701015
+##  [73]  67.815912  67.919376  69.014277  69.837554  70.495729  70.649720
+##  [79]  73.487408  73.621006  73.753217  76.880168  77.038830  81.483575
+##  [85]  82.917764  85.277221  86.488691  86.765721  87.485280  89.193139
+##  [91]  89.687764  90.479060  91.090927  94.670840  95.881095  96.763501
+##  [97] 106.443753 111.534408 112.251570 115.203556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{toc}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 0.05 sec elapsed
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(microbenchmark)}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{mbm}\OtherTok{\textless{}{-}}\FunctionTok{microbenchmark}\NormalTok{(}
+  \StringTok{"burbuja"}\OtherTok{=}\NormalTok{\{}
+\NormalTok{    x}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{burbuja }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  n}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(x)}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{j)) \{}
+      \ControlFlowTok{if}\NormalTok{ (x[i]}\SpecialCharTok{\textgreater{}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]) \{}
+\NormalTok{        temp}\OtherTok{\textless{}{-}}\NormalTok{x[i]}
+\NormalTok{        x[i]}\OtherTok{\textless{}{-}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+\NormalTok{        x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{temp}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{burbuja}\NormalTok{(x)}
+\NormalTok{res}
+\NormalTok{  \},}
+\StringTok{"sort"}\OtherTok{=}\NormalTok{\{}
+  \FunctionTok{sort}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{)}
+
+\NormalTok{mbm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Unit: microseconds
+##     expr    min      lq     mean  median      uq     max neval
+##  burbuja 1246.4 1524.25 1950.711 1623.45 1812.45 22661.8   100
+##     sort   88.9  101.35  211.617  118.75  280.60  1279.3   100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{autoplot}\NormalTok{(mbm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Coordinate system already present. Adding new coordinate system, which will replace the existing one.
+\end{verbatim}
+
+\includegraphics{Trabajo_En_Clase__files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{creaciuxf3n-de-vectores}{%
+\subsection{creación de vectores}\label{creaciuxf3n-de-vectores}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+creación de un vector de 9 componentes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creaciuxf3n-de-matrices}{%
+\subsection{creación de matrices}\label{creaciuxf3n-de-matrices}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1}\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(v2,}\AttributeTok{ncol=}\DecValTok{3}\NormalTok{,}\AttributeTok{byrow=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+el byrow me deja ordenar los valores por fila en el caso de TRUE, o en
+columna en el caso de FALSE
+
+\hypertarget{averiguar-que-clase-de-ojeto-hemos-creado}{%
+\subsection{averiguar que clase de ojeto hemos
+creado}\label{averiguar-que-clase-de-ojeto-hemos-creado}}
+
+para saber de qué clase se utiliza el comando class(nombre del objeto)
+vemos que nos dice que el vector es de tipo numérico y la matriz de tipo
+array o matriz, además siempre es numerica la matriz.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(v1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "matrix" "array"
+\end{verbatim}
+
+\hypertarget{creaciuxf3n-de-un-vector-de-palabras}{%
+\subsection{creación de un vector de
+palabras}\label{creaciuxf3n-de-un-vector-de-palabras}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v3}\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{)}
+\FunctionTok{class}\NormalTok{(v3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a" "b" "c"
+\end{verbatim}
+
+hay un comando que se llama dimnames que sirve para ponerle nombre a las
+filas y las columnas.
+
+\hypertarget{importar-datos-de-la-red-o-de-excel}{%
+\subsection{importar datos de la red o de
+excel}\label{importar-datos-de-la-red-o-de-excel}}
+
+lo que nos dice al pegar un dato de excel es que enumera todos los
+cambios que tuvimos que hacer en el archivo original para dejarlo
+ordenado y acomodado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{casos }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"C:/Users/franc/Downloads/casos.csv"}\NormalTok{, }
+    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Covid Argentina}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%m/\%d/\%Y"}\NormalTok{)), }
+    \AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...2`
+## * `` -> `...3`
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: One or more parsing issues, see `problems()` for details
+\end{verbatim}
+
+dataset es un conjunto de datos de una tabla tomados de la vida real que
+estan documentados y estan guardados en repositorios de datos.
+
+\hypertarget{ploteo-de-datos}{%
+\subsection{ploteo de datos}\label{ploteo-de-datos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Casos" "1"     "2"     "2"     "12"    "17"    "19"    "21"    "31"   
+## [10] "34"    "45"    "56"    "65"    "79"    "98"    "128"   "158"   "225"  
+## [19] "266"   "301"   "387"   "502"   "589"   "690"   "745"   "820"   "1054" 
+## [28] "1054"  "1133"  "1265"  "1353"  "1451"  "1554"  "1628"  "1715"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}\NormalTok{,}\AttributeTok{main=}\StringTok{"Contagios 2020"}\NormalTok{,}\AttributeTok{ylab=}\StringTok{"Semana"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"Casos Positivos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in xy.coords(x, y, xlabel, ylabel, log): NAs introducidos por coerción
+\end{verbatim}
+
+\includegraphics{Trabajo_En_Clase__files/figure-latex/unnamed-chunk-13-1.pdf}
+
+
+\end{document}
