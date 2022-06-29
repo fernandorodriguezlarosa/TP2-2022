@@ -1,0 +1,725 @@
+\documentclass[]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+
+\usepackage[hyphens]{url}
+
+
+\usepackage{lineno} % add
+
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\usepackage{graphicx}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={Informe\_R\_Final\_},
+            colorlinks=false,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+
+\setcounter{secnumdepth}{0}
+% Pandoc toggle for numbering sections (defaults to be off)
+\setcounter{secnumdepth}{0}
+
+% Pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+
+
+
+\begin{document}
+
+
+\begin{frontmatter}
+
+  \title{Informe\_R\_Final\_}
+    \author[Facultad de Ingeniería]{Franco Santilli%
+  \corref{cor1}%
+  \fnref{1}}
+   \ead{francosantilli47@gmail.com} 
+    \author[Facultad de Ingeniería]{Guillermo Zaina}
+   \ead{zainaguillermo@gmail.com} 
+    \author[Facultad de Ingeniería]{Marcos Santiago%
+  %
+  \fnref{2}}
+   \ead{marcossantiagoh2@gmail.com} 
+    \author[Facultad de Ingeniería]{Renzo Tagarot%
+  %
+  \fnref{2}}
+   \ead{renzot0800@gmail.com} 
+    \author[Facultad de Ingeniería]{Fernando Rodriguez%
+  %
+  \fnref{2}}
+   \ead{ferodriguez15@gmail.com} 
+      \affiliation[Facultad de Ingeniería]{Paseo Dr.~Emilio Descotte
+750, M5500 Mendoza}
+    \cortext[cor1]{Corresponding author}
+  
+  \begin{abstract}
+  
+  \end{abstract}
+  
+ \end{frontmatter}
+
+\hypertarget{metodo-sys.time}{%
+\section{Metodo sys.time}\label{metodo-sys.time}}
+
+Esto lo utilizaremos para medir el tiempo de ejecución de un fragmento
+de código, colocándolo al principio y fin del fragmento.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{duermete\_un\_minuto }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{ }\FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{5}\NormalTok{) \}}
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\FunctionTok{duermete\_un\_minuto}\NormalTok{()}
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 5.106807 secs
+\end{verbatim}
+
+Con esto, hemos generaos una función de tiempo que antes no existía.
+
+\hypertarget{metodo-biblioteca-tictoc}{%
+\section{Metodo biblioteca tictoc}\label{metodo-biblioteca-tictoc}}
+
+Esto de usar una biblioteca es llamar u cargar una procedimientos que
+generará comando nuevos en R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tictoc)}
+\FunctionTok{tic}\NormalTok{(}\StringTok{"sleeping"}\NormalTok{)}
+\NormalTok{A}\OtherTok{\textless{}{-}}\DecValTok{20}
+\FunctionTok{print}\NormalTok{(}\StringTok{"dormire una siestita..."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "dormire una siestita..."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"...suena el despertador"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "...suena el despertador"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{toc}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sleeping: 2.11 sec elapsed
+\end{verbatim}
+
+De igual manera, solo se podrá cronometrar un fragmento de código a la
+vez.
+
+\hypertarget{metodo-biblioteca-rbenchmark}{%
+\section{Metodo biblioteca
+rbenchmark}\label{metodo-biblioteca-rbenchmark}}
+
+R lo llama como ``un simple contenedor alrededor del fragmento de codigo
+system.time''. Sin embargo agrega mas conveniencia a este, como por
+ejemplo para cronometrar múltiples expresiones se necesita únicamente
+una sola llamada de referencia. También los resultados se organizan en
+un marco de datos, entre otras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rbenchmark)}
+\CommentTok{\# lm crea una regresion lineal}
+\FunctionTok{benchmark}\NormalTok{(}\StringTok{"lm"} \OtherTok{=}\NormalTok{ \{}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{), }\DecValTok{100}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ X }\SpecialCharTok{\%*\%} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X }\SpecialCharTok{+} \DecValTok{0}\NormalTok{)}\SpecialCharTok{$}\NormalTok{coef}
+\NormalTok{\},}
+\StringTok{"pseudoinverse"} \OtherTok{=}\NormalTok{ \{}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{), }\DecValTok{100}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ X }\SpecialCharTok{\%*\%} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ X) }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ y}
+\NormalTok{\},}
+\StringTok{"linear system"} \OtherTok{=}\NormalTok{ \{}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{), }\DecValTok{100}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ X }\SpecialCharTok{\%*\%} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ X, }\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ y)}
+\NormalTok{\},}
+\AttributeTok{replications =} \DecValTok{1000}\NormalTok{,}
+\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(}\StringTok{"test"}\NormalTok{, }\StringTok{"replications"}\NormalTok{, }\StringTok{"elapsed"}\NormalTok{,}
+\StringTok{"relative"}\NormalTok{, }\StringTok{"user.self"}\NormalTok{, }\StringTok{"sys.self"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            test replications elapsed relative user.self sys.self
+## 3 linear system         1000    0.73    1.000      0.44     0.04
+## 1            lm         1000    5.41    7.411      3.36     0.22
+## 2 pseudoinverse         1000    0.95    1.301      0.54     0.01
+\end{verbatim}
+
+Finalmente se nos entregará el tiempo cronometrado en cada parte del
+código como se puede ver en el cuadro.
+
+\hypertarget{metodo-biblioteca-microbenchmark}{%
+\section{Metodo biblioteca
+microbenchmark}\label{metodo-biblioteca-microbenchmark}}
+
+Es similar al paquete rbenchmark, ya que nos permite comparar tiempos
+cronometrados en múltiples fragmentos de código dentro de R. Sin embargo
+este presenta mayor comodidad y funcionalidad, aunque acabe siendo un
+poco inestable (aunque no sera un gran problema para el consumidor
+final). Algunas de estas nuevas funcionalidades son; por ejemplo, es que
+se puede ver a través de un cuadro la salida del código, como también el
+poder verificar automáticamente los resultados de las expresiones de
+referencia sin ser especificamente solicitadas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(microbenchmark)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2017}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{10000}
+\NormalTok{p }\OtherTok{\textless{}{-}} \DecValTok{100}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{p), n, p)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ X }\SpecialCharTok{\%*\%} \FunctionTok{rnorm}\NormalTok{(p) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{check\_for\_equal\_coefs }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(values) \{}
+\NormalTok{tol }\OtherTok{\textless{}{-}} \FloatTok{1e{-}12}
+\NormalTok{max\_error }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{abs}\NormalTok{(values[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ values[[}\DecValTok{2}\NormalTok{]]),}
+\FunctionTok{abs}\NormalTok{(values[[}\DecValTok{2}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ values[[}\DecValTok{3}\NormalTok{]]),}
+\FunctionTok{abs}\NormalTok{(values[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ values[[}\DecValTok{3}\NormalTok{]])))}
+\NormalTok{max\_error }\SpecialCharTok{\textless{}}\NormalTok{ tol}
+\NormalTok{\}}
+\NormalTok{mbm }\OtherTok{\textless{}{-}} \FunctionTok{microbenchmark}\NormalTok{(}\StringTok{"lm"} \OtherTok{=}\NormalTok{ \{ b }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X }\SpecialCharTok{+} \DecValTok{0}\NormalTok{)}\SpecialCharTok{$}\NormalTok{coef \},}
+\StringTok{"pseudoinverse"} \OtherTok{=}\NormalTok{ \{}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ X) }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ y}
+\NormalTok{\},}
+\StringTok{"linear system"} \OtherTok{=}\NormalTok{ \{}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ X, }\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ y)}
+\NormalTok{\},}
+\AttributeTok{check =}\NormalTok{ check\_for\_equal\_coefs)}
+\NormalTok{mbm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Unit: milliseconds
+##           expr      min       lq     mean   median       uq       max neval
+##             lm 416.7854 523.5713 643.5524 619.4224 723.9560 1267.4070   100
+##  pseudoinverse 429.5449 653.2967 818.6715 783.0602 898.7846 1616.3826   100
+##  linear system 300.1373 422.9701 503.6173 481.5339 584.1457  855.3172   100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{autoplot}\NormalTok{(mbm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Coordinate system already present. Adding new coordinate system, which will replace the existing one.
+\end{verbatim}
+
+\includegraphics{Informe_R_Final__files/figure-latex/unnamed-chunk-7-1.pdf}
+
+Se puede ver, como se mencionó anteriormente, el tiempo cronometrado en
+cada fragmento de código, como también graficados los mismos
+posteriormente.
+
+\hypertarget{trabajo-de-evaluacion-del-modulo}{%
+\section{Trabajo de evaluacion del
+modulo}\label{trabajo-de-evaluacion-del-modulo}}
+
+\hypertarget{comparar-la-generacion-de-un-vector-secuencia}{%
+\subsection{Comparar la generacion de un vector
+secuencia}\label{comparar-la-generacion-de-un-vector-secuencia}}
+
+Aunque en R exista la funcionalidad de generar una secuencia con el
+comando ``seq'', nosotros utilizaremos otras formas para generar
+vectores o secuencias.
+
+\hypertarget{secuencia-generada-con-for}{%
+\subsubsection{Secuencia generada con
+for}\label{secuencia-generada-con-for}}
+
+A continuación generaremos un vector con el comando ``for'', agregando
+también ``sys.time'' para cronometrar el tiempo de generación del mismo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{50000}\NormalTok{) \{ A[i] }\OtherTok{\textless{}{-}}\NormalTok{ (i}\SpecialCharTok{*}\DecValTok{2}\NormalTok{)\}}
+\FunctionTok{head}\NormalTok{ (A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  4  6  8 10 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tail}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  99990  99992  99994  99996  99998 100000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 0.174068 secs
+\end{verbatim}
+
+He aquí los datos prometidos al principio.
+
+\hypertarget{secuencia-generada-con-r}{%
+\subsubsection{Secuencia generada con
+R}\label{secuencia-generada-con-r}}
+
+A continuación generaremos un vector con el comando que mencionamos
+principalmente ``seq'', cronometrando también el tiempo de realización
+del mismo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1000000}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\FunctionTok{head}\NormalTok{ (A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  3  5  7  9 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tail}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 999989 999991 999993 999995 999997 999999
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 0.06461 secs
+\end{verbatim}
+
+A traves del comando ``sys.time'', podemos ver que para generar un
+vector secuencia (que en nuestro caso contiene numeros del 1 al 100.000
+en intervalos de 2) se va a requerir un menor tiempo de procesamiento el
+comando para generar secuencias ``seq'' que ya viene de base con el
+RStudio. Aunque la diferencia entre ``for'' y ``seq'' es mínima, se
+denota cuál es más eficiente.
+
+\hypertarget{definicion-matematica-recurrente}{%
+\subsection{Definicion matematica
+recurrente}\label{definicion-matematica-recurrente}}
+
+Ahora mostraremos como programar la serie de Fibonacci a través de una
+definición matemática recurrente. Esta serie de números es tal que
+comienza con 0 y 1, y a partir de estos, cada número es la suma de los 2
+anteriores. Como dato a destacar, esta serie tiene numerosas
+aplicaciones en distintas ciencias de la computación, matemática y
+teoría de juegos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{\{ a}\OtherTok{\textless{}{-}}\NormalTok{i}
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{c }\OtherTok{\textless{}{-}}\NormalTok{ a}\SpecialCharTok{+}\NormalTok{b}
+\FunctionTok{print}\NormalTok{(c)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 0.1195741 secs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{f1}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{f2}\OtherTok{\textless{}{-}}\DecValTok{1}
+\NormalTok{N}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{vec}\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(f1,f2)}
+\NormalTok{f3}\OtherTok{\textless{}{-}}\DecValTok{0}
+
+\ControlFlowTok{while}\NormalTok{ (f3 }\SpecialCharTok{\textless{}=} \DecValTok{1000000}\NormalTok{) \{}
+\NormalTok{  N}\OtherTok{\textless{}{-}}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{  f3}\OtherTok{\textless{}{-}}\NormalTok{f1}\SpecialCharTok{++}\NormalTok{f2}
+\NormalTok{  vec}\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(vec,f3)}
+\NormalTok{  f1}\OtherTok{\textless{}{-}}\NormalTok{f2}
+\NormalTok{  f2}\OtherTok{\textless{}{-}}\NormalTok{f3}
+\NormalTok{  c}\OtherTok{\textless{}{-}}\NormalTok{a}\SpecialCharTok{+}\NormalTok{b}
+\NormalTok{  i}\OtherTok{\textless{}{-}}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{\}}
+\NormalTok{N}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]       0       1       1       2       3       5       8      13      21
+## [10]      34      55      89     144     233     377     610     987    1597
+## [19]    2584    4181    6765   10946   17711   28657   46368   75025  121393
+## [28]  196418  317811  514229  832040 1346269
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Time difference of 0.185205 secs
+\end{verbatim}
+
+Finalmente para generar un número mayor a 1.000.000 en la serie, se
+necesitan 30 iteraciones.
+
+\hypertarget{ordenaciuxf3n-de-un-vector-por-metodo-burbuja}{%
+\subsection{Ordenación de un vector por metodo
+burbuja}\label{ordenaciuxf3n-de-un-vector-por-metodo-burbuja}}
+
+Este es un simple método de ordenación, también conocido como método del
+intercambio directo. Funciona de manera que revisa cada elemento de la
+lista que va a ser ordenada con el siguiente, intercambiándolos de
+posición si están en el orden equivocado. Es necesario revisar varias
+veces toda la lista hasta que no se necesiten más intercambios, lo cual
+significa que la lista está ordenada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(microbenchmark)}
+
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{,}\DecValTok{20}\NormalTok{)}
+
+
+\NormalTok{mbm }\OtherTok{\textless{}{-}} \FunctionTok{microbenchmark}\NormalTok{( }
+  \StringTok{"burbuja"}\OtherTok{=}\NormalTok{\{}
+
+\NormalTok{burbuja }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{n}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(x)}
+\ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{))\{}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{j))\{}
+\ControlFlowTok{if}\NormalTok{(x[i]}\SpecialCharTok{\textgreater{}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])\{}
+\NormalTok{temp}\OtherTok{\textless{}{-}}\NormalTok{x[i]}
+\NormalTok{x[i]}\OtherTok{\textless{}{-}}\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+\NormalTok{x[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{temp}
+\NormalTok{\}}
+\NormalTok{\}}
+\NormalTok{\}}
+\FunctionTok{return}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{burbuja}\NormalTok{(x)}
+
+\NormalTok{  \},}
+
+\StringTok{"sort"} \OtherTok{=}\NormalTok{ \{}
+  \FunctionTok{sort}\NormalTok{(x)}
+\NormalTok{\}}
+\NormalTok{)}
+
+\NormalTok{mbm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Unit: microseconds
+##     expr  min     lq     mean median     uq     max neval
+##  burbuja 67.5  86.15 1541.536 102.35 211.90 57635.2   100
+##     sort 82.9 117.40  241.882 141.35 249.15  4274.1   100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{autoplot}\NormalTok{(mbm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Coordinate system already present. Adding new coordinate system, which will replace the existing one.
+\end{verbatim}
+
+\includegraphics{Informe_R_Final__files/figure-latex/unnamed-chunk-13-1.pdf}
+
+Comparando los dos métodos a través de microbenchmark podemos notar que
+el metodo de la burbuja requiere de mucho más recursos y tiempo de
+procesamiento que el metodo sort. Sin embargo se puede observar una
+mayor presición en el método de la burbuja.
+
+\hypertarget{modelado-matemuxe1tico-de-una-epidema}{%
+\subsection{Modelado matemático de una
+epidema}\label{modelado-matemuxe1tico-de-una-epidema}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Numeros de casos semanales en Argentina}
+\NormalTok{f1}\OtherTok{\textless{}{-}}\DecValTok{51778}
+
+\NormalTok{N}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{f3 }\OtherTok{\textless{}{-}} \FloatTok{1.62}
+\NormalTok{f2 }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(f1)}
+
+\ControlFlowTok{while}\NormalTok{ (f1 }\SpecialCharTok{\textless{}=} \DecValTok{40000000}\NormalTok{) \{}
+\NormalTok{  f2 }\OtherTok{\textless{}{-}}\NormalTok{ f1}\SpecialCharTok{*}\NormalTok{f3}
+\NormalTok{  f1 }\OtherTok{\textless{}{-}}\NormalTok{ f2}
+\NormalTok{  N }\OtherTok{\textless{}{-}}\NormalTok{ N}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{  vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(vec,f2)}
+  
+\NormalTok{\}}
+
+\NormalTok{N}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]    51778.00    83880.36   135886.18   220135.62   356619.70   577723.91
+##  [7]   935912.74  1516178.64  2456209.39  3979059.21  6446075.93 10442643.00
+## [13] 16917081.66 27405672.29 44397189.11
+\end{verbatim}
+
+Con el número de casos actuales semanales en Argentina y con el factor
+de contagio alrededor de F=1.62, tardariamos 14 semanas en llegar a los
+40 millones de contagiados .
+
+\hypertarget{importar-datos-de-la-red-o-de-excel}{%
+\subsection{Importar datos de la red o de
+excel}\label{importar-datos-de-la-red-o-de-excel}}
+
+Cabe mencionar que para poder importar un archivo de excel (u otro
+programa), primeramente se necesita realizar una serie de pasos. Estos
+son: 1. Ir a ``File'' 2. Ir a ``Import Dataset'' 3. Click en ``From Text
+(readr)'' 4. A continuación en la pestaña seleccionar el archivo de
+excel buscado a traves de ``browse''. Se cargará el archivo. 5.
+Finalmente en ``Delimiter'' seleccionar ``Semicolon'' 6. Click en
+``Import'', lo que generará el archivo en una pestaña de R. 7. Así luego
+escribimos el siguiente fragmento de código para añadirlo a este código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{casos }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"C:/Users/franc/Downloads/casos.csv"}\NormalTok{, }
+    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Covid Argentina}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%m/\%d/\%Y"}\NormalTok{)), }
+    \AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...2`
+## * `` -> `...3`
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: One or more parsing issues, see `problems()` for details
+\end{verbatim}
+
+\hypertarget{grafico-de-barras-en-caso-covid}{%
+\section{Grafico de barras en caso
+covid}\label{grafico-de-barras-en-caso-covid}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{casos }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"C:/Users/franc/Downloads/casos.csv"}\NormalTok{, }
+    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{...2 =} \FunctionTok{col\_number}\NormalTok{()), }
+    \AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...2`
+## * `` -> `...3`
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: One or more parsing issues, see `problems()` for details
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   NA    1    2    2   12   17   19   21   31   34   45   56   65   79   98
+## [16]  128  158  225  266  301  387  502  589  690  745  820 1054 1054 1133 1265
+## [31] 1353 1451 1554 1628 1715
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}\NormalTok{, }\AttributeTok{main=}\StringTok{"Contagio 2020"}\NormalTok{, }\AttributeTok{ylab=}\StringTok{"Casos positivos"}\NormalTok{, }\AttributeTok{xlab=}\StringTok{"Semanas"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Informe_R_Final__files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Informe_R_Final__files/figure-latex/unnamed-chunk-17-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(casos}\SpecialCharTok{$}\NormalTok{...}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Informe_R_Final__files/figure-latex/unnamed-chunk-17-3.pdf}
+Finalmente gracias a la planilla de excel podemos observar el gráfico
+finalizado sobre los casos de covid.
+
+
+\end{document}

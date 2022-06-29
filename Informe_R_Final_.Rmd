@@ -1,0 +1,316 @@
+---
+title: "Informe_R_Final_"
+author:
+- name: Franco Santilli
+  email: francosantilli47@gmail.com
+  affiliation: Facultad de Ingeniería
+  correspondingauthor: yes
+  footnote: 1
+- name: Guillermo Zaina
+  email: zainaguillermo@gmail.com
+  affiliation: Facultad de Ingeniería
+- name: Marcos Santiago
+  email: marcossantiagoh2@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+- name: Renzo Tagarot
+  email: renzot0800@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+- name: Fernando Rodriguez
+  email: ferodriguez15@gmail.com
+  affiliation: Facultad de Ingeniería
+  footnote: 2
+address:
+- code: Facultad de Ingeniería
+  address: Paseo Dr. Emilio Descotte 750, M5500 Mendoza
+output: rticles::elsevier_article
+---
+
+# Metodo sys.time
+
+  Esto lo utilizaremos para medir el tiempo de ejecución de un fragmento de código, colocándolo al principio y fin del fragmento.
+
+```{r}
+duermete_un_minuto <- function() { Sys.sleep(5) }
+start_time <- Sys.time()
+duermete_un_minuto()
+end_time <- Sys.time()
+end_time - start_time
+```
+  Con esto, hemos generaos una función de tiempo que antes no existía.
+
+# Metodo biblioteca tictoc
+
+  Esto de usar una biblioteca es llamar u cargar una procedimientos que generará comando nuevos en R.
+
+```{r}
+library(tictoc)
+tic("sleeping")
+A<-20
+print("dormire una siestita...")
+```
+```{r}
+Sys.sleep(2)
+print("...suena el despertador")
+```
+
+```{r}
+toc()
+```
+  De igual manera, solo se podrá cronometrar un fragmento de código a la vez.
+
+# Metodo biblioteca rbenchmark
+
+  R lo llama como "un simple contenedor alrededor del fragmento de codigo system.time". Sin embargo agrega mas conveniencia a este, como por ejemplo para cronometrar múltiples expresiones se necesita únicamente una sola llamada de referencia. También los resultados se organizan en un marco de datos, entre otras.
+
+```{r}
+library(rbenchmark)
+# lm crea una regresion lineal
+benchmark("lm" = {
+X <- matrix(rnorm(1000), 100, 10)
+y <- X %*% sample(1:10, 10) + rnorm(100)
+b <- lm(y ~ X + 0)$coef
+},
+"pseudoinverse" = {
+X <- matrix(rnorm(1000), 100, 10)
+y <- X %*% sample(1:10, 10) + rnorm(100)
+b <- solve(t(X) %*% X) %*% t(X) %*% y
+},
+"linear system" = {
+X <- matrix(rnorm(1000), 100, 10)
+y <- X %*% sample(1:10, 10) + rnorm(100)
+b <- solve(t(X) %*% X, t(X) %*% y)
+},
+replications = 1000,
+columns = c("test", "replications", "elapsed",
+"relative", "user.self", "sys.self"))
+```
+  Finalmente se nos entregará el tiempo cronometrado en cada parte del código como se puede ver en el cuadro.
+
+# Metodo biblioteca microbenchmark
+
+  Es similar al paquete rbenchmark, ya que nos permite comparar tiempos cronometrados en múltiples fragmentos de código dentro de R. Sin embargo este presenta mayor comodidad y funcionalidad, aunque acabe siendo un poco inestable (aunque no sera un gran problema para el consumidor final).
+  Algunas de estas nuevas funcionalidades son; por ejemplo, es que se puede ver a través de un cuadro la salida del código, como también el poder verificar automáticamente los resultados de las expresiones de referencia sin ser especificamente solicitadas.
+
+```{r}
+library(microbenchmark)
+set.seed(2017)
+n <- 10000
+p <- 100
+X <- matrix(rnorm(n*p), n, p)
+y <- X %*% rnorm(p) + rnorm(100)
+check_for_equal_coefs <- function(values) {
+tol <- 1e-12
+max_error <- max(c(abs(values[[1]] - values[[2]]),
+abs(values[[2]] - values[[3]]),
+abs(values[[1]] - values[[3]])))
+max_error < tol
+}
+mbm <- microbenchmark("lm" = { b <- lm(y ~ X + 0)$coef },
+"pseudoinverse" = {
+b <- solve(t(X) %*% X) %*% t(X) %*% y
+},
+"linear system" = {
+b <- solve(t(X) %*% X, t(X) %*% y)
+},
+check = check_for_equal_coefs)
+mbm
+```
+
+```{r}
+library(ggplot2)
+autoplot(mbm)
+```
+
+  Se puede ver, como se mencionó anteriormente, el tiempo cronometrado en cada fragmento de código, como también graficados los mismos posteriormente.
+
+# Trabajo de evaluacion del modulo
+
+## Comparar la generacion de un vector secuencia
+
+  Aunque en R exista la funcionalidad de generar una secuencia con el comando "seq", nosotros utilizaremos otras formas para generar vectores o secuencias.
+
+### Secuencia generada con for
+
+  A continuación generaremos un vector con el comando "for", agregando también "sys.time" para cronometrar el tiempo de generación del mismo.
+
+```{r}
+start_time <- Sys.time()
+for (i in 1:50000) { A[i] <- (i*2)}
+head (A)
+tail(A)
+end_time <- Sys.time()
+end_time - start_time
+```
+  He aquí los datos prometidos al principio.
+
+### Secuencia generada con R
+
+  A continuación generaremos un vector con el comando que mencionamos principalmente "seq", cronometrando también el tiempo de realización del mismo.
+
+```{r}
+start_time <- Sys.time()
+A <- seq(1,1000000, 2)
+head (A)
+tail(A)
+end_time <- Sys.time()
+end_time - start_time
+```
+  A traves del comando "sys.time", podemos ver que para generar un vector secuencia (que en nuestro caso contiene numeros del 1 al 100.000 en intervalos de 2) se va a requerir un menor tiempo de procesamiento el comando para generar secuencias "seq" que ya viene de base con el RStudio. Aunque la diferencia entre "for" y "seq" es mínima, se denota cuál es más eficiente.
+
+## Definicion matematica recurrente
+
+  Ahora mostraremos como programar la serie de Fibonacci a través de una definición matemática recurrente.
+  Esta serie de números es tal que comienza con 0 y 1, y a partir de estos, cada número es la suma de los 2 anteriores.
+  Como dato a destacar, esta serie tiene numerosas aplicaciones en distintas ciencias de la computación, matemática y teoría de juegos.
+
+```{r}
+start_time <- Sys.time()
+for(i in 0:5)
+{ a<-i
+b <-i+1
+c <- a+b
+print(c)
+}
+end_time <- Sys.time()
+end_time - start_time
+```
+
+```{r}
+start_time <- Sys.time()
+f1<-0
+f2<-1
+N<-0
+vec<- c(f1,f2)
+f3<-0
+
+while (f3 <= 1000000) {
+  N<-N+1
+  f3<-f1++f2
+  vec<- c(vec,f3)
+  f1<-f2
+  f2<-f3
+  c<-a+b
+  i<-i+1
+}
+N
+vec
+
+end_time <- Sys.time()
+end_time - start_time
+```
+  Finalmente para generar un número mayor a 1.000.000 en la serie, se necesitan 30 iteraciones.
+
+## Ordenación de un vector por metodo burbuja
+
+  Este es un simple método de ordenación, también conocido como método del intercambio directo.
+  Funciona de manera que revisa cada elemento de la lista que va a ser ordenada con el siguiente, intercambiándolos de posición si están en el orden equivocado. Es necesario revisar varias veces toda la lista hasta que no se necesiten más intercambios, lo cual significa que la lista está ordenada.
+
+```{r}
+library(microbenchmark)
+
+x<-sample(1:100,20)
+
+
+mbm <- microbenchmark( 
+  "burbuja"={
+
+burbuja <- function(x){
+n<-length(x)
+for(j in 1:(n-1)){
+for(i in 1:(n-j)){
+if(x[i]>x[i+1]){
+temp<-x[i]
+x[i]<-x[i+1]
+x[i+1]<-temp
+}
+}
+}
+return(x)
+}
+res<-burbuja(x)
+
+  },
+
+"sort" = {
+  sort(x)
+}
+)
+
+mbm
+
+```
+
+```{r}
+library(ggplot2)
+autoplot(mbm)
+```
+
+  Comparando los dos métodos a través de microbenchmark podemos notar que el metodo de la burbuja requiere de mucho más recursos y tiempo de procesamiento que el metodo sort. Sin embargo se puede observar una mayor presición en el método de la burbuja.
+
+## Modelado matemático de una epidema
+
+```{r}
+# Numeros de casos semanales en Argentina
+f1<-51778
+
+N<-0
+f3 <- 1.62
+f2 <- 0
+vec <- c(f1)
+
+while (f1 <= 40000000) {
+  f2 <- f1*f3
+  f1 <- f2
+  N <- N+1
+  vec <- c(vec,f2)
+  
+}
+
+N
+vec
+
+```
+Con el número de casos actuales semanales en Argentina y con el factor de contagio alrededor de F=1.62, tardariamos 14 semanas en llegar a los 40 millones de contagiados .
+
+## Importar datos de la red o de excel 
+
+  Cabe mencionar que para poder importar un archivo de excel (u otro programa), primeramente se necesita realizar una serie de pasos. Estos son:
+  1. Ir a "File"
+  2. Ir a "Import Dataset"
+  3. Click en "From Text (readr)"
+  4. A continuación en la pestaña seleccionar el archivo de excel buscado a traves de "browse". Se cargará el archivo.
+  5. Finalmente en "Delimiter" seleccionar "Semicolon"
+  6. Click en "Import", lo que generará el archivo en una pestaña de R.
+  7. Así luego escribimos el siguiente fragmento de código para añadirlo a este código:
+
+```{r}
+library(readr)
+casos <- read_delim("C:/Users/franc/Downloads/casos.csv", 
+    delim = ";", escape_double = FALSE, col_types = cols(`Covid Argentina` = col_date(format = "%m/%d/%Y")), 
+    trim_ws = TRUE)
+
+```
+# Grafico de barras en caso covid 
+
+```{r}
+library(readr)
+casos <- read_delim("C:/Users/franc/Downloads/casos.csv", 
+    delim = ";", escape_double = FALSE, col_types = cols(...2 = col_number()), 
+    trim_ws = TRUE)
+
+```
+
+```{r}
+casos$...2
+plot(casos$...2, main="Contagio 2020", ylab="Casos positivos", xlab="Semanas")
+hist(as.numeric(casos$...2))
+plot(density(na.omit(casos$...2)))
+
+
+```
+  Finalmente gracias a la planilla de excel podemos observar el gráfico finalizado sobre los casos de covid.
+
+
+
